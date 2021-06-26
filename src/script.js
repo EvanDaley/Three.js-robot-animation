@@ -8,6 +8,7 @@ async function main() {
   // create a new world
   const world = new World(container);
 
+  // call any async functions
   await world.init()
 
   // start the animation loop
