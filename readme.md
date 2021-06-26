@@ -1,10 +1,9 @@
-# Webpack + Imported Models + Animations
-Built based on the work of Bruno Simon and Lewy Blue!
-- https://threejs-journey.xyz/
-- https://discoverthreejs.com/
+# Three.js Robot Animation
+Built off of my starter project:
+- https://github.com/EvanDaley/Three.js-webpack-with-animations
 
 ## This project is running live on Github Pages
-See the live demo here: https://evandaley.github.io/Three.js-webpack-with-animations/
+See the live demo here: https://evandaley.github.io/Three.js-robot-animation/
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
