@@ -10,8 +10,6 @@ function setupModel(data) {
 
         const clip = data.animations[0];
 
-        console.log(data)
-
         model.tick = (delta) => { };
 
         if (clip) {
@@ -21,8 +19,6 @@ function setupModel(data) {
 
             model.tick = (delta) => mixer.update(delta);
         }
-
-        console.log('model', model)
 
         group.add(model)
         updatables.push(model)

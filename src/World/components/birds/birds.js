@@ -5,28 +5,18 @@ import { setupModel } from './setupModel.js';
 async function loadBirds() {
     const loader = new GLTFLoader();
   
-    const [parrotData, flamingoData, storkData] = await Promise.all([
+    const [chadData] = await Promise.all([
       loader.loadAsync('models/Chad.glb'),
-      loader.loadAsync('models/Flamingo.glb'),
-      loader.loadAsync('models/Stork.glb'),
     ]);
   
-    console.log('Squaaawk!', parrotData);
+    console.log('Squaaawk!', chadData);
   
-    const parrot = setupModel(parrotData);
+    const chad = setupModel(chadData);
     
-    const flamingo = setupModel(flamingoData);
-    
-    const stork = setupModel(storkData);
-
-    flamingo.position.set(7.5, 0, -10);
-    parrot.position.set(.1, 0, 2.5);
-    stork.position.set(0, -2.5, -10);
+    chad.position.set(0, 0, 2.5);
 
     return {
-      parrot,
-      flamingo,
-      stork,
+      chad,
     };
   }
 
