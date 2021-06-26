@@ -1,22 +1,42 @@
-import { AnimationMixer } from 'three';
+import { AnimationMixer, Group } from 'three';
 
 function setupModel(data) {
-    const model = data.scene.children[0];
-    const clip = data.animations[0];
+    const group = new Group()
+    const updatables = []
 
     console.log(data)
+    for (let i = 0; i < data.scene.children.length; i++) {
+        const model = data.scene.children[0];
 
-    model.tick = (delta) => { };
+        const clip = data.animations[0];
 
-    if (clip) {
-        const mixer = new AnimationMixer(model);
-        const action = mixer.clipAction(clip);
-        action.play();
+        console.log(data)
 
-        model.tick = (delta) => mixer.update(delta);
+        model.tick = (delta) => { };
+
+        if (clip) {
+            const mixer = new AnimationMixer(model);
+            const action = mixer.clipAction(clip);
+            action.play();
+
+            model.tick = (delta) => mixer.update(delta);
+        }
+
+        console.log('model', model)
+
+        group.add(model)
+        updatables.push(model)
     }
 
-    return model;
+    group.tick = (delta) => {
+        for (const object of updatables) {
+            object.tick(delta);
+        }
+    };
+
+    console.log(group)
+
+    return group;
 }
 
 export { setupModel };

@@ -41,6 +41,8 @@ class World {
     loop.updatables.push(parrot, flamingo, stork)
 
     scene.add(parrot, flamingo, stork)
+
+    console.log(scene)
   }
 
   switchTarget() {
