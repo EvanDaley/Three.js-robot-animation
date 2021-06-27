@@ -8,14 +8,40 @@ class Loop {
     this.scene = scene;
     this.renderer = renderer;
     this.updatables = [];
+
+    this.mouseX = 0
+    this.mouseY = 0
+
+    this.prevMouseX = 0
+    this.prevMouseY = 0
+
+    this.mouseDeltaX = 0
+    this.mouseDeltaY = 0
+
+    this.createMouseListener()
+  }
+
+  createMouseListener() {
+    document.addEventListener('mousemove', (event) => {
+      this.updateMouseStats(event)
+    })
+  }
+
+  updateMouseStats(event) {
+    this.prevMouseX = this.mouseX
+    this.prevMouseY = this.mouseY
+
+    this.mouseX = event.clientX
+    this.mouseY = event.clientY
+
+    this.mouseDeltaX = this.mouseX - this.prevMouseX
+    this.mouseDeltaY = this.mouseY - this.prevMouseY
   }
 
   start() {
     this.renderer.setAnimationLoop(() => {
-      // tell every animated object to tick forward one frame
       this.tick();
 
-      // render a frame
       this.renderer.render(this.scene, this.camera);
     });
   }
@@ -25,15 +51,13 @@ class Loop {
   }
 
   tick() {
-    // only call the getDelta function once per frame!
     const delta = clock.getDelta();
 
-    // console.log(
-    //   `The last frame rendered in ${delta * 1000} milliseconds`,
-    // );
 
     for (const object of this.updatables) {
-      object.tick(delta);
+      object.tick(delta, this.mouseDeltaX, this.mouseDeltaY);
+      this.mouseDeltaX = 0
+      this.mouseDeltaX = 0
     }
   }
 }

@@ -18,6 +18,9 @@ let controls
 let ground
 let container
 
+let mouseX
+let mouseY
+
 class World {
   constructor(targetElement) {
     container = targetElement
@@ -62,6 +65,7 @@ class World {
   createParticleSystems() {
     const backgroundParticles = createBackgroundParticles()
     scene.add(backgroundParticles)
+    loop.updatables.push(backgroundParticles)
   }
 
   async init() {
