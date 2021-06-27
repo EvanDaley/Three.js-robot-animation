@@ -3,13 +3,12 @@
     padding: 0;
 }
 
-html,
-body {
+html, body {
     margin: 0;
     overflow: hidden;
-    text-align: center;
     font-size: 12px;
-    font-family: 'Poppins';
+    /* Decent options: Courier New, Arial, Verdana, Helvetica */
+    font-family: 'Helvetica';
     color: white;
     height: 100vh;
 }
@@ -31,6 +30,42 @@ body {
     height: 100%;
     display: grid;
     place-content: center;
+}
+
+.html-content {
+    display: flex;
+    gap: 5em;
+    width: 100%;
+    padding-top: 3em;
+    position: relative;
+}
+
+.html-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid white;
+    transform: scaleX(1);
+}
+
+h1 {
+    font-size: 4rem;
+    width: 50vw;
+    line-height: 97%;
+    text-align: right;
+}
+
+h1, p {
+    flex-basis: 0;
+    flex-grow: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+p {
+    font-size: 1.4rem;
+    width: 40vw;
 }
 
 /*# sourceMappingURL=main.css.map*/
