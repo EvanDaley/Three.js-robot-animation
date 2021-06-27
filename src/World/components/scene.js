@@ -5,7 +5,7 @@ function createScene() {
 
   // scene.background = new Color('#21282a');
   scene.background = new Color('black');
-  scene.background = new Color('#11182a');
+  scene.background = new Color('#11181a');
 
   return scene;
 }
