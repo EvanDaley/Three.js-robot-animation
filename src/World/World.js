@@ -1,7 +1,7 @@
 import { createCamera } from './components/camera.js';
 import { createLights } from './components/lights.js';
 import { createScene } from './components/scene.js';
-import { loadBirds } from './components/birds/birds.js';
+import { loadBots } from './components/bots/bots.js';
 import { createGround } from './components/ground.js'
 
 import { createControls } from './systems/controls.js';
@@ -14,7 +14,7 @@ let renderer
 let scene
 let loop
 let controls
-let birds = []
+let cameraTargets = []
 let ground
 
 class World {
@@ -37,10 +37,10 @@ class World {
   }
 
   async init() {
-    const { chad } = await loadBirds()
+    const { chad } = await loadBots()
     controls.target.copy(chad.position)
 
-    birds.push(chad)
+    cameraTargets.push(chad)
 
     loop.updatables.push(chad)
 
@@ -50,19 +50,19 @@ class World {
   }
 
   switchTarget() {
-    const focusedIndex = birds.findIndex(arrayElement => arrayElement.position.x == controls.target.x)
-    const targetIndex = (focusedIndex + 1) % (birds.length)
-    const targetObject = birds[targetIndex]
+    const focusedIndex = cameraTargets.findIndex(arrayElement => arrayElement.position.x == controls.target.x)
+    const targetIndex = (focusedIndex + 1) % (cameraTargets.length)
+    const targetObject = cameraTargets[targetIndex]
     controls.target.copy(targetObject.position)
   }
 
   reset() {
-    controls.target.copy(birds[0].position)
+    controls.target.copy(cameraTargets[0].position)
     camera.position.set(-1.5, 1.5, 6.5);
   }
 
   zoomOut() {
-    controls.target.copy(birds[0].position)
+    controls.target.copy(cameraTargets[0].position)
     camera.position.set(-3.5, 1.5, 16.5);
   }
 

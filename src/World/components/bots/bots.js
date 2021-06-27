@@ -2,7 +2,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 import { setupModel } from './setupModel.js';
 
-async function loadBirds() {
+async function loadBots() {
     const loader = new GLTFLoader();
   
     const [chadData] = await Promise.all([
@@ -20,4 +20,4 @@ async function loadBirds() {
     };
   }
 
-export { loadBirds };
+export { loadBots };
