@@ -15,6 +15,7 @@ async function main() {
   world.start();
 }
 
+// Run main and display any async errors from the world.init() function.
 main().catch(err => {
   console.error(err)
 });
