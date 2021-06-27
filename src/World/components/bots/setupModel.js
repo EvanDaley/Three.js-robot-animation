@@ -1,4 +1,4 @@
-import { AnimationMixer, Group } from 'three';
+import { AnimationMixer, Group, MathUtils } from 'three';
 
 function setupModel(data) {
     const group = new Group()
@@ -24,10 +24,15 @@ function setupModel(data) {
         updatables.push(model)
     }
 
+    const radiansPerSecond = MathUtils.degToRad(-2);
+
     group.tick = (delta) => {
         for (const object of updatables) {
             object.tick(delta);
         }
+
+        group.rotation.x += radiansPerSecond * delta;
+        group.rotation.y += radiansPerSecond * delta;
     };
 
     console.log(group)

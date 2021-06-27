@@ -3,6 +3,7 @@ import { createLights } from './components/lights.js';
 import { createScene } from './components/scene.js';
 import { loadBots } from './components/bots/bots.js';
 import { createGround } from './components/ground.js'
+import { createBackgroundParticles } from './components/particles';
 
 import { createControls } from './systems/controls.js';
 import { createRenderer } from './systems/renderer.js';
@@ -25,6 +26,7 @@ class World {
     this.createLights()
     this.createGameSystems()
     this.createSceneObjects()
+    this.createParticleSystems()
   }
 
   createResponsiveScene() {
@@ -52,9 +54,14 @@ class World {
   createSceneObjects() {
     ground = createGround()
 
-    scene.add(
-      ground
-    );
+    // scene.add(
+    //   ground
+    // );
+  }
+
+  createParticleSystems() {
+    const backgroundParticles = createBackgroundParticles()
+    scene.add(backgroundParticles)
   }
 
   async init() {
@@ -64,8 +71,6 @@ class World {
     loop.updatables.push(chad)
 
     scene.add(chad)
-
-    console.log(scene)
   }
 
   render() {
