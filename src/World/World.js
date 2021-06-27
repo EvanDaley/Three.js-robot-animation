@@ -17,6 +17,7 @@ let loop
 let controls
 let ground
 let container
+let resizer 
 
 let mouseX
 let mouseY
@@ -37,7 +38,7 @@ class World {
     renderer = createRenderer();
     camera = createCamera();
     container.append(renderer.domElement);
-    new Resizer(container, camera, renderer);
+    resizer = new Resizer(container, camera, renderer);
   }
 
   createLights() {
@@ -75,6 +76,8 @@ class World {
     loop.updatables.push(chad)
 
     scene.add(chad)
+
+    resizer.onResize()
   }
 
   render() {
