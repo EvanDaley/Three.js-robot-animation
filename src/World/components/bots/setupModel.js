@@ -24,7 +24,7 @@ function setupModel(data) {
         updatables.push(model)
     }
 
-    const radiansPerSecond = MathUtils.degToRad(-2);
+    const radiansPerSecond = MathUtils.degToRad(-3);
 
     group.tick = (delta) => {
         for (const object of updatables) {

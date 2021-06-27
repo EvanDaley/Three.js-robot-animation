@@ -9,6 +9,7 @@ import { createControls } from './systems/controls.js';
 import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
+import { Vector3 } from 'three';
 
 let camera
 let renderer
@@ -71,6 +72,10 @@ class World {
 
   async init() {
     const { chad } = await loadBots()
+
+    // const camTarget = chad.position + (new Vector3(0,-1,0))
+
+
     controls.target.copy(chad.position)
 
     loop.updatables.push(chad)
