@@ -1,6 +1,3 @@
-# Three.js Robot Animation
-Built off of my starter project: Three.js-webpack-with-animations
-
 ## Live Demo
 See the live demo here: https://evandaley.github.io/Three.js-robot-animation/
 
