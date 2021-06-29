@@ -20,9 +20,6 @@ let ground
 let container
 let resizer 
 
-let mouseX
-let mouseY
-
 class World {
   constructor(targetElement) {
     container = targetElement
