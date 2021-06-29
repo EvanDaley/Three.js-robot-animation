@@ -24,9 +24,6 @@ let resizer
 
 let scenes = []
 let currentSceneIndex = 0
-
-let mouseX
-let mouseY
 let world
 
 let scrollProgress = 0
