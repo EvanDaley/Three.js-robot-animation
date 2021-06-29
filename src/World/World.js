@@ -1,4 +1,4 @@
-import throttle from "lodash.throttle" 
+import throttle from "lodash.throttle"
 
 import { createCamera } from './components/camera.js';
 import { createLights } from './components/lights.js';
@@ -29,7 +29,7 @@ let mouseX
 let mouseY
 let world
 
-let scrollProgress = 5
+let scrollProgress = 0
 let progressBar
 
 class World {
@@ -53,17 +53,20 @@ class World {
     camera = createCamera();
     container.append(renderer.domElement);
     resizer = new Resizer(container, camera, renderer);
-    
-  
+
+
     progressBar = document.querySelector('.progress-bar');
+    let scene1Html = document.querySelector('.scene-one-content')
+
     const trackScroll = (event) => {
-      scrollProgress += 5
+      scrollProgress += 3
       console.log(scrollProgress)
       progressBar.style = `width: ${scrollProgress}%`
 
-      if(scrollProgress > 100) {
+      if (scrollProgress > 100) {
         scrollProgress = 0
         currentSceneIndex += 1
+        // scene1Html.style = "display:none"
       }
     }
     renderer.domElement.addEventListener("wheel", throttle(trackScroll, 100));

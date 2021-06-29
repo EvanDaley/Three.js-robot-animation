@@ -22,7 +22,7 @@ async function initThreeJSWorld() {
 async function initContentAnimations() {
   gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
 
-  const content = CSSRulePlugin.getRule('.html-content:before')
+  const content = CSSRulePlugin.getRule('.scene-one-content:before')
   const h1 = document.querySelector('h1')
   const subheading = document.querySelector('.subheading')
   const tl = gsap.timeline()
