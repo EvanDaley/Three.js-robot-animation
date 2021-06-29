@@ -31,6 +31,7 @@ npm run build
 npm run deploy
 ```
 
-For more information on deployment, see: https://www.npmjs.com/package/gh-pages
+For more information on the deployment process, see: https://www.npmjs.com/package/gh-pages
 
-
+## Contact info
+You can reach me at my personal email: daley.evan@gmail.com
