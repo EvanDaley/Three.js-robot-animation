@@ -8,9 +8,6 @@ async function main() {
   await initContentAnimations()
 }
 
-const trackScroll = (event) => console.log("HERE", event)
-window.addEventListener("wheel", throttle(trackScroll, 100));
-
 async function initThreeJSWorld() {
   const container = document.querySelector('#webgl-scene-container');
   const world = new World(container);
@@ -27,12 +24,12 @@ async function initContentAnimations() {
 
   const content = CSSRulePlugin.getRule('.html-content:before')
   const h1 = document.querySelector('h1')
-  const p = document.querySelector('p')
+  const subheading = document.querySelector('.subheading')
   const tl = gsap.timeline()
 
   tl.from(content, { delay: .5, duration: 4, cssRule: { scaleX: 0 } })
   tl.to(h1, { duration: 2, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)', y: '30px' }, "-=3")
-  tl.to(p, { duration: 2, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)', y: '30px' }, "-=2")
+  tl.to(subheading, { duration: 2, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)', y: '30px' }, "-=2")
 }
 
 // Run main and display any async errors from the world.init() function.

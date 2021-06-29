@@ -1,3 +1,5 @@
+import throttle from "lodash.throttle" 
+
 import { createCamera } from './components/camera.js';
 import { createLights } from './components/lights.js';
 import { createScene } from './components/scene.js';
@@ -48,6 +50,9 @@ class World {
     camera = createCamera();
     container.append(renderer.domElement);
     resizer = new Resizer(container, camera, renderer);
+    
+    const trackScroll = (event) => console.log("HERE", event)
+    renderer.domElement.addEventListener("wheel", throttle(trackScroll, 100));
 
     scenes.push(scene, scene2)
   }
