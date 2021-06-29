@@ -1,11 +1,15 @@
 import './style.css'
 import { World } from './World/World.js';
 import { gsap, ScrollTrigger, CSSRulePlugin } from "gsap/all";
+import throttle from "lodash.throttle" 
 
 async function main() {
   await initThreeJSWorld()
   await initContentAnimations()
 }
+
+const trackScroll = (event) => console.log("HERE", event)
+window.addEventListener("wheel", throttle(trackScroll, 100));
 
 async function initThreeJSWorld() {
   const container = document.querySelector('#webgl-scene-container');

@@ -23,7 +23,7 @@ html, body {
 }
 
 .html-content-container {
-    pointer-events: none;
+    /* pointer-events: none; */
     position: absolute;
     z-index: 1;
     width: 100%;

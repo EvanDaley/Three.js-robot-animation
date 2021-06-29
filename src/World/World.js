@@ -9,7 +9,7 @@ import { createControls } from './systems/controls.js';
 import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { Loop } from './systems/Loop.js';
-import { Vector3 } from 'three';
+import { Color } from 'three';
 
 let camera
 let renderer
@@ -18,14 +18,19 @@ let loop
 let controls
 let ground
 let container
-let resizer 
+let resizer
+
+let scenes = []
+let currentSceneIndex = 0
 
 let mouseX
 let mouseY
+let world
 
 class World {
   constructor(targetElement) {
     container = targetElement
+    world = this
 
     this.createResponsiveScene()
     this.createLights()
@@ -35,11 +40,16 @@ class World {
   }
 
   createResponsiveScene() {
+    const scene2 = createScene()
+    scene2.background = new Color('red');
+
     scene = createScene();
     renderer = createRenderer();
     camera = createCamera();
     container.append(renderer.domElement);
     resizer = new Resizer(container, camera, renderer);
+
+    scenes.push(scene, scene2)
   }
 
   createLights() {
@@ -48,7 +58,7 @@ class World {
   }
 
   createGameSystems() {
-    loop = new Loop(camera, scene, renderer);
+    loop = new Loop(world, renderer);
     controls = createControls(camera, renderer.domElement);
 
     loop.updatables.push(
@@ -73,9 +83,6 @@ class World {
   async init() {
     const { chad } = await loadBots()
 
-    // const camTarget = chad.position + (new Vector3(0,-1,0))
-
-
     controls.target.copy(chad.position)
 
     loop.updatables.push(chad)
@@ -86,7 +93,7 @@ class World {
   }
 
   render() {
-    renderer.render(scene, camera);
+    renderer.render(scenes[currentSceneIndex], camera);
   }
 
   start() {
