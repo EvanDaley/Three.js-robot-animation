@@ -29,6 +29,9 @@ let mouseX
 let mouseY
 let world
 
+let scrollProgress = 5
+let progressBar
+
 class World {
   constructor(targetElement) {
     container = targetElement
@@ -51,7 +54,18 @@ class World {
     container.append(renderer.domElement);
     resizer = new Resizer(container, camera, renderer);
     
-    const trackScroll = (event) => console.log("HERE", event)
+  
+    progressBar = document.querySelector('.progress-bar');
+    const trackScroll = (event) => {
+      scrollProgress += 5
+      console.log(scrollProgress)
+      progressBar.style = `width: ${scrollProgress}%`
+
+      if(scrollProgress > 100) {
+        scrollProgress = 0
+        currentSceneIndex += 1
+      }
+    }
     renderer.domElement.addEventListener("wheel", throttle(trackScroll, 100));
 
     scenes.push(scene, scene2)
