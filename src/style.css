@@ -74,8 +74,11 @@ h1, .subheading {
     margin-top: 10px;
     width: 90%;
     height: 16px;
-    background: #e1e4e8;
+    background: none;
+    border-style: solid;
     border-radius: 3px;
+    border-width: thin;
+    border-color: white;
     overflow: hidden;
 }
 

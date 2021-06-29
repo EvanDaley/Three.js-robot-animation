@@ -46,7 +46,7 @@ class World {
 
   createResponsiveScene() {
     const scene2 = createScene()
-    scene2.background = new Color('red');
+    scene2.background = new Color('black');
 
     scene = createScene();
     renderer = createRenderer();
@@ -59,14 +59,14 @@ class World {
     let scene1Html = document.querySelector('.scene-one-content')
 
     const trackScroll = (event) => {
-      scrollProgress += 3
+      scrollProgress += 5
       console.log(scrollProgress)
       progressBar.style = `width: ${scrollProgress}%`
 
       if (scrollProgress > 100) {
         scrollProgress = 0
         currentSceneIndex += 1
-        // scene1Html.style = "display:none"
+        scene1Html.style = "display:none"
       }
     }
     renderer.domElement.addEventListener("wheel", throttle(trackScroll, 100));
