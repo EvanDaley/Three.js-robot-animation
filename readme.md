@@ -1,6 +1,9 @@
 ## Live Demo
 See the live demo here: https://evandaley.github.io/Three.js-robot-animation/
 
+## About
+This project uses Three.JS, webpack, and GSAP.
+
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
 Run this followed commands:
@@ -29,3 +32,5 @@ npm run deploy
 ```
 
 For more information on deployment, see: https://www.npmjs.com/package/gh-pages
+
+
