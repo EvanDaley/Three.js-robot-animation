@@ -25,11 +25,7 @@ function createBackgroundParticles() {
     const particlesMesh = new Points(particlcesGeometry, material)
 
     particlesMesh.tick = (delta, mouseX, mouseY) => {
-        // particlesMesh.rotation.y += mouseY * delta * .01 || 0
-        // particlesMesh.rotation.x += mouseX * delta * .01 || 0
-
         particlesMesh.rotation.y += delta * -.005
-        // particlesMesh.rotation.x += delta * .002
     }
 
     return particlesMesh
